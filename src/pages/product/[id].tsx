@@ -5,6 +5,7 @@ import Stripe from "stripe"
 import Image from "next/image"
 import axios from "axios"
 import { useState } from "react"
+import Head from "next/head"
 
 interface ProductProps {
   product: {
@@ -40,19 +41,25 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <ProductContainer>
-      <ImageContainer>
-        <Image src={product.imageUrl} width={520} height={480} alt="" />
-      </ImageContainer>
+    <>
+      <Head>
+        <title>{product.name} | Ignite Shop</title>
+      </Head>
 
-      <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-        <p>{product.description}</p>
+      <ProductContainer>
+        <ImageContainer>
+          <Image src={product.imageUrl} width={520} height={480} alt="" />
+        </ImageContainer>
 
-        <button disabled={isCreateCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
-      </ProductDetails>
-    </ProductContainer>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
+
+          <button disabled={isCreateCheckoutSession} onClick={handleBuyProduct}>Comprar agora</button>
+        </ProductDetails>
+      </ProductContainer>
+    </>
   )
 }
 
