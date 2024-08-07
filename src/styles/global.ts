@@ -18,6 +18,14 @@ export const globalStyles = globalCss({
     fontWeight: 400,
   },
 
+  a: {
+    color: 'inherit',
+  },
+
+  button: {
+    cursor: 'pointer',
+  },
+
   '::-webkit-scrollbar': {
     width: '0.35rem'
   },

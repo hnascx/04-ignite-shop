@@ -1,6 +1,6 @@
 import { styled } from "../../styles";
 
-export const CardButtonContainer = styled("button", {
+export const CartButtonContainer = styled("button", {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
