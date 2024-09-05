@@ -4,6 +4,7 @@ import { CartClose, CartContent, CartFooter, CartFooterDetails, CartProduct, Car
 import { X } from 'phosphor-react';
 import Image from 'next/image';
 
+import shirtImg from '../../../public/Shirt.png'
 export function Cart() {
   return (
     <Dialog.Root>
@@ -28,7 +29,7 @@ export function Cart() {
                     width={100}
                     height={93}
                     alt=""
-                    src="https://s3-alpha-sig.figma.com/img/389f/ecc9/dfd930c7acf7b3b2e05b363813fe1f6b?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=M1JBpk14Zj05x7dMo5WFHqVBwPIh~CzlYSpVuzhjmT6GCv3AP8fK2LlrpZPPBO4bA6jv8BY3WYIxmR62sd~FOLK9i3aEdD3nC2fvHicX9smLD04fqWRx-eLVTV2uvCiYCZJwWTHcr0BnHXkayL4VFxD0H3nydwn3-hR8ZTDjwh4xujPXvammYUmGe~Lx0rrxpzpfbQmZxJaOQEVSV-392ndVrc-D2x1MvZiW7Zk39lXaVUX9lBWAVYxfmVGahyg6oFCey3oC9Ur71iU88XaM8w3YQ3kpZ3ohXMztAm6eckgHnaxh2Xku1pMIppkz2I4IGdQM0pesE6y4kXCqHe9PYQ__"
+                    src={shirtImg}
                   />
                 </CartProductImage>
                 <CartProductDetails>
