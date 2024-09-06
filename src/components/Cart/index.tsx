@@ -5,7 +5,11 @@ import { X } from 'phosphor-react';
 import Image from 'next/image';
 
 import shirtImg from '../../../public/Shirt.png'
+import { useCart } from '../../hooks/useCart';
 export function Cart() {
+  const { cartItems } = useCart()
+  const cartQuantity = cartItems.length
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
