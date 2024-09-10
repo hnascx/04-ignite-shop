@@ -27,7 +27,7 @@ export default function Home({ products }: HomeProps) {
     }
   })
 
-  const { addToCart } = useCart()
+  const { addToCart, checkIfItemAlreadyExists } = useCart()
 
   function handleAddToCart(e: MouseEvent<HTMLButtonElement>, product: IProduct) {
     e.preventDefault()
@@ -57,6 +57,7 @@ export default function Home({ products }: HomeProps) {
                   <CartButton 
                     color="green" 
                     size="large"
+                    disabled={checkIfItemAlreadyExists(product.id)}
                     onClick={(e) => handleAddToCart(e, product)}
                   />
                 </footer>
@@ -85,6 +86,8 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL'
       }).format(price.unit_amount / 100),
+      numberPrice: price.unit_amount / 100,
+      defaultPriceId: price.id,
     }
   })
   

@@ -5,7 +5,7 @@ export interface IProduct {
   name: string;
   imageUrl: string;
   price: string;
-  numberPrice: string;
+  numberPrice: number;
   description: string;
   defaultPrice: string;
   defaultPriceId: string;
@@ -13,7 +13,9 @@ export interface IProduct {
 
 interface CartContextData {
   cartItems: IProduct[]
+  cartTotal: number;
   addToCart: (product: IProduct) => void;
+  removeCartItem: (productId: string) => void;
   checkIfItemAlreadyExists: (productId: string) => boolean;
 }
 
@@ -26,8 +28,16 @@ export const CartContext = createContext({} as CartContextData)
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<IProduct[]>([])
 
+  const cartTotal = cartItems.reduce((total, product) => {
+    return total + product.numberPrice
+  }, 0)
+
   function addToCart(product: IProduct) {
     setCartItems((state) => [...state, product])
+  }
+
+  function removeCartItem(productId: string) {
+    setCartItems((state) => state.filter((item) => item.id !== productId))
   }
 
   function checkIfItemAlreadyExists(productId: string) {
@@ -38,7 +48,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     <CartContext.Provider 
       value={{ 
         cartItems, 
-        addToCart, 
+        addToCart,
+        removeCartItem,
+        cartTotal, 
         checkIfItemAlreadyExists 
       }}>
       {children}
